@@ -16,7 +16,7 @@ class PlayerController {
     try {
       const { id_equipo } = req.params;
 
-      const jugadores = await PlayerService.obtenerPorEquipo(id_equipo);
+      const jugadores = await PlayerService.getByEquipo(id_equipo);
 
       res.json({ ok: true, data: jugadores });
     } 

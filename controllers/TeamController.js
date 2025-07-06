@@ -24,6 +24,32 @@ class TeamController {
     }
   }
 
+  async getCupsByTeam(req, res) {
+    try {
+      const { id_equipo } = req.params;
+
+      const cups = await TeamService.getCupsByTeam(id_equipo);
+
+      res.json({ ok: true, data: cups });
+    }
+    catch (error) {
+      res.status(400).json({ ok: false, error: error.message });
+    }
+  }
+
+  async getById(req, res) {
+    try {
+      const { id } = req.params;
+
+      const team = await TeamService.getById(id);
+
+      res.json({ ok: true, data: team });
+    }
+    catch (error) {
+      res.status(400).json({ ok: false, error: error.message });
+    }
+  }
+
 }
 
 export default new TeamController();

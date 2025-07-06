@@ -31,6 +31,33 @@ class TeamDAO {
         throw new Error('No se pudo insertar el equipo');
     }
   }
+
+  async getCupsByTeam(id_equipo) {
+    try {
+        const [rows] = await db.query(
+            `SELECT t.*, dt.fecha_ganado from trofeos t
+            INNER JOIN detalle_trofeos dt on t.id = dt.trofeo_id
+            WHERE dt.equipo_id = ?
+            `,
+             [id_equipo]
+        );
+        return rows;
+    }
+    catch (error) {
+
+    }
+  }
+
+  async getById(id) {
+    try {
+      const [rows] = await db.query('SELECT * FROM equipos WHERE id = ?', [id]);
+      return rows;
+  }
+  catch (error) {
+      console.error('Error al obtener los equipos:', error.message);
+      throw new Error('No se pudieron obtener los equipos');
+  }
+  }
 }
 
 export default new TeamDAO();

@@ -16,7 +16,7 @@ const corsOptions = {
   origin: [
     'http://localhost:4200',  // Angular dev server
     'http://localhost:3000',  // Si usas otro puerto
-    'https://tu-dominio.com'  // Tu dominio en producción
+    'https://torneof7vm.website'  // Tu dominio en producción
   ],
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],

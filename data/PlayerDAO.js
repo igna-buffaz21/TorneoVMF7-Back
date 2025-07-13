@@ -41,6 +41,7 @@ class PlayerDAO {
       const [rows] = await db.query(
         `SELECT 
             COUNT(t.id) AS cantidad_trofeos,
+            j.id,
             j.nombre AS nombre_jugador, 
             j.posicion, 
             j.edad, 

@@ -21,6 +21,21 @@ class PlayerService {
 
     return await PlayerDAO.getByEquipo(id_equipo);
   }
+
+  async getPlayersWithAwards() {
+    const playersWithAwards = await PlayerDAO.getPlayersWithAwards();
+
+    return playersWithAwards;
+  }
+
+  async getAwarsForPlayer(id) {
+    if (!id) throw new Error('ID de jugador obligatorio');
+
+    const awards = await PlayerDAO.getAwarsForPlayer(id);
+
+    return awards;
+  }
+
 }
 
 export default new PlayerService();

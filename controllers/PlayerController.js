@@ -24,6 +24,30 @@ class PlayerController {
       res.status(400).json({ ok: false, error: error.message });
     }
   }
+
+  async getPlayersWithAwards(req, res) {
+    try {
+      const playersWithAwards = await PlayerService.getPlayersWithAwards();
+
+      res.json({ ok: true, data: playersWithAwards });
+    }
+    catch (error) {
+      res.status(400).json({ ok: false, error: error.message });
+    }
+  }
+
+  async getAwarsForPlayer(req, res) {
+    try {
+      const { id } = req.params;
+
+      const awards = await PlayerService.getAwarsForPlayer(id);
+
+      res.json({ ok: true, data: awards });
+    }
+    catch (error) {
+      res.status(400).json({ ok: false, error: error.message });
+    }
+  }
 }
 
 export default new PlayerController();

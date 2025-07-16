@@ -45,11 +45,12 @@ class PlayerDAO {
             j.nombre AS nombre_jugador, 
             j.posicion, 
             j.edad, 
-            j.es_federado
+            j.es_federado,
+            dj.goles
             FROM detalle_jugadores dj
             INNER JOIN jugadores j ON dj.id_jugador = j.id
             INNER JOIN trofeos t ON dj.id_trofeo = t.id
-            GROUP BY j.id, j.nombre, j.posicion, j.edad, j.es_federado
+            GROUP BY j.id, j.nombre, j.posicion, j.edad, j.es_federado, dj.goles
             ORDER BY cantidad_trofeos DESC;`
       )
       
